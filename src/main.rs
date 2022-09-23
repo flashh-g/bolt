@@ -1,5 +1,6 @@
 use crate::web_serv::bind_to_ip_addr;
 
+mod args;
 mod config;
 mod web_serv;
 

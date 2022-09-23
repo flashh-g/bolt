@@ -1,5 +1,6 @@
+use crate::args::Arg;
 use crate::config::Config;
-use directories::ProjectDirs;
+use clap::Parser;
 use std::{
     fs,
     io::{prelude::*, BufReader},
@@ -14,20 +15,9 @@ async fn process_socket_and_fmt_html(mut stream: TcpStream) {
     } else {
         "HTTP?1.1 404 NOT FOUND"
     };
+    let arg = Arg::parse();
 
-    let content = "
-        <!DOCTYPE html>
-    <html lang='en'>
-          <head>
-        <meta charset='utf-8'>
-            <title>Hello!</title>
-          </head>
-          <body>
-        <h1>Hello!</h1>
-            <p>Hi from Rust</p>
-          </body>
-        </html>
-    ";
+    let content = fs::read_to_string(arg.entry_point).unwrap();
     let length = content.len();
     let response = format!("{status_line}\r\n{length}\r\n\r\n{content}");
     stream.write_all(response.as_bytes()).unwrap();
