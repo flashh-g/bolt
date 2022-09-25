@@ -1,1 +1,0 @@
-/home/josh/Projects/Rust-project/bolt/target/debug/bolt: /home/josh/Projects/Rust-project/bolt/src/config.rs /home/josh/Projects/Rust-project/bolt/src/main.rs /home/josh/Projects/Rust-project/bolt/src/web_serv.rs
